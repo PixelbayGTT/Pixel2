@@ -41,16 +41,25 @@ import {
 
 // --- CONFIGURACIÓN DE FIREBASE ---
 const firebaseConfig = {
+
   apiKey: "AIzaSyBg4JuYpPktFoaAHFeboc7mDHSvaGD9YKA",
+
   authDomain: "pixelbay-e4f08.firebaseapp.com",
+
   projectId: "pixelbay-e4f08",
+
   storageBucket: "pixelbay-e4f08.firebasestorage.app",
+
   messagingSenderId: "104379071554",
+
   appId: "1:104379071554:web:6389baec6797e2a38ec1db"
+
 };
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const appId = "panel-produccion-01";
 
 // --- COMPONENTES AUXILIARES ---
 
@@ -118,10 +127,6 @@ useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, setUser);
     return () => unsubscribe();
 }, []);
-    initAuth();
-    const unsubscribe = onAuthStateChanged(auth, setUser);
-    return () => unsubscribe();
-  }, []);
 
   // 2. Cargar Datos de Firestore
   useEffect(() => {
@@ -149,7 +154,7 @@ useEffect(() => {
     });
 
     return () => unsubscribe();
-  }, [auth]);
+  }, [user]);
 
   // Lógica de fechas
   const calculateRenewalDate = (startStr, months) => {
